@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 interface TableEntry {
   name: string;
   counter: number;
+  rank?: number;
 }
 
 @Component({
@@ -18,15 +19,30 @@ interface TableEntry {
 export class TableComponent implements OnInit, OnDestroy {
 
   dataSource: TableEntry[] = [];
-  displayedColumns: string[] = ['name', 'counter', 'adjustCounter', 'remove'];
+  displayedColumns: string[] = ['rank', 'name', 'counter', 'incrDecr', 'adjustCounter', 'remove'];
+  columnWidths = {
+    rank: '10%',
+    name: '20%',
+    counter: '50%',
+    incrDecr: '5%',
+    adjustCounter: '10%',
+    remove: "5%",
+  };
+
+
   private subscription: Subscription = new Subscription(); // To hold the subscription
 
 
-  constructor(public dialog: MatDialog, private tableDataService: TableDataService) {}
+  constructor(public dialog: MatDialog, private tableDataService: TableDataService) { }
 
   ngOnInit(): void {
     this.subscription.add(this.tableDataService.getCounters().subscribe(data => {
-      this.dataSource = data;
+      const sortedData = data.sort((a, b) => b.counter - a.counter);
+      sortedData.forEach((entry, index) => {
+        entry.rank = index + 1; // Rank starting at 1
+      });
+
+      this.dataSource = sortedData;
     }));
   }
 
@@ -36,7 +52,7 @@ export class TableComponent implements OnInit, OnDestroy {
 
   openAddEntryDialog(): void {
     const dialogRef = this.dialog.open(AddEntryDialogComponent, {
-      width: '250px',
+      //width: '250px',
       data: {}
     });
 

@@ -1,15 +1,15 @@
 <h1 mat-dialog-title>Add New Entry</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <mat-label>Name</mat-label>
+    <label>Name</label>
     <input matInput [(ngModel)]="data.name">
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Counter</mat-label>
+    <label>Anzahl</label>
     <input matInput type="number" [(ngModel)]="data.counter">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data">Add</button>
-  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data">Speichern</button>
+  <button mat-button (click)="onNoClick()">Zurück</button>
 </div>

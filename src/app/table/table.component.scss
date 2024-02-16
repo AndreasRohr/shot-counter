@@ -1,0 +1,41 @@
+.header{
+    height: 150px;
+    background-color: #5389ED;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif, monospace;
+    font-weight: bold;
+}
+
+
+.cell-first{
+    font-size: 35px;
+    font-weight: bold;
+    height: 100px;
+  }
+
+  .cell-second{
+    font-size: 30px;
+    height: 100px;
+
+  }
+
+  .cell-third{
+    font-size: 25px;
+    height: 100px;
+
+  }
+
+  .cell{
+    font-size: 20px;
+    height: 100px;
+
+  }
+
+
+  .header-row{
+    font-size: 30px;
+    font-weight: bold;
+  }

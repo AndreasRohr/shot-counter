@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 interface TableEntry {
   name: string;
   counter: number;
+  rank?: number;
 }
 
 @Injectable({
